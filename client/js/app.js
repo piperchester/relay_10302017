@@ -9,6 +9,7 @@ import {
 } from 'found';
 
 import { Home } from './components/home';
+// import { CarHome } from './components/CarHome';
 class AppPage extends React.Component {
 
   static propTypes = {
@@ -21,9 +22,9 @@ class AppPage extends React.Component {
         <h1>GraphQL + Relay ⚛️</h1>
       </header>
       {this.props.children}
-      <footer>
+      {/* <footer>
         <small>&copy; 2017, Piper</small>
-      </footer>
+      </footer> */}
     </div>;
   }
 }
