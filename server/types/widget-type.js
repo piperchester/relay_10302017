@@ -41,7 +41,6 @@ const widgetData = new WidgetData('http://localhost:3010');
 
 // need to specify type we're creating as well as a lookup func
 registerType(Widget, widgetType, id => {
-
   // lookup the widget based on ID; then shallow merge it with a new Widget and return
   return widgetData.one(id).then(
     widget => Object.assign(new Widget(), widget)
