@@ -1,13 +1,12 @@
 import http from 'http';
 import express from 'express';
-import graphqlHttp from 'express-graphql';
+import graphqlHttp from 'express-graphql';  // express middleware
 
 import { schema } from './schema';
 
 import './output-schema';
 
-const port = 3020;
-
+const PORT = 3020;
 const app = express();
 
 app.use('/', graphqlHttp({
@@ -21,6 +20,6 @@ app.use('/', graphqlHttp({
 
 const server = http.createServer(app);
 
-server.listen(port, () => {
-  console.log(`widgets graphql server stated on port ${port}`);
+server.listen(PORT, () => {
+  console.log(`widgets graphql server stated on port ${PORT}`);
 });

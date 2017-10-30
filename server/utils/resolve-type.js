@@ -1,3 +1,4 @@
+// used to resolve circular deps
 import { fromGlobalId } from 'graphql-relay';
 
 const types = {};
@@ -18,7 +19,7 @@ export const getNode = globalId => {
   const { type: typeName, id } = fromGlobalId(globalId);
 
   if (types[typeName]) {
-    return types[typeName].lookupFn(id);
+    return types[typeName].lookupFn(id);  // this look up func is defined in widget type
   } else {
     return null;
   }

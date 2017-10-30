@@ -17,11 +17,11 @@ class AppPage extends React.Component {
   render() {
     return <div>
       <header>
-        <h1>Sample React/GraphQL/Relay App</h1>
+        <h1>GraphQL + Relay ⚛️</h1>
       </header>
       {this.props.children}
       <footer>
-        <small>&copy; 2017, A Cool Company, Inc.</small>
+        <small>&copy; 2017, Piper</small>
       </footer>
     </div>;
   }
