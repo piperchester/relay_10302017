@@ -1,5 +1,6 @@
 import { GraphQLInputObjectType, GraphQLString } from 'graphql';
 
+// Note the difference between GQLInputObjectType and regular ObjectType
 export const insertCarType = new GraphQLInputObjectType({
   name: 'InsertCar',
   fields: () => ({
