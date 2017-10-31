@@ -21,7 +21,7 @@ class AppPage extends React.Component {
   render() {
     return <div>
       <header>
-        <h1>Welcome to Modern Relay!</h1>
+        <h1>Modern Relay ⚛️</h1>
       </header>
       <nav>
         <ul>

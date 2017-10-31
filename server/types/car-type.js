@@ -8,7 +8,6 @@ import { registerType } from '../utils/resolve-type';
 
 import { widgetConnectionType } from '../connections/widgets';
 
-
 import { Widget } from '../models/graphql-models'; 
 import { CarData } from '../models/car-data'; 
 import { Viewer } from '../models/graphql-models';

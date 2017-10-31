@@ -15,6 +15,10 @@
       "color": "red",
       "price": 123,
       "id": 2
+    },
+    {
+      "color": "blue",
+      "id": 3
     }
   ],
   "owners": [
@@ -58,6 +62,22 @@
       "size": "tiny",
       "quantity": 10,
       "ownerId": 3
+    },
+    {
+      "name": "test",
+      "description": "test desct",
+      "color": "blue",
+      "size": "small",
+      "quantity": 12,
+      "id": 5
+    },
+    {
+      "name": "test",
+      "description": "test desct",
+      "color": "blue",
+      "size": "small",
+      "quantity": 12,
+      "id": 6
     }
   ],
   "people": [
