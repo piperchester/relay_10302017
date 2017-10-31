@@ -16,8 +16,8 @@ export const viewerType = new GraphQLObjectType({
   name: 'Viewer',
   description: 'User of the application',
 
-  // data fields that the Viewer returns		
- -  // globalIdField will set a Base 64 encoded index
+  // data fields that the Viewer returns
+  // globalIdField will set a Base 64 encoded index
   fields: () => ({
     id: globalIdField('Viewer'),
     widgets: {
@@ -44,8 +44,8 @@ export const viewerType = new GraphQLObjectType({
       type: carConnectionType,
       description: 'get all of the cars',
       args: connectionArgs,
-// func to get the data; calls REST service to pull widgets		
--      // and returns them to GQL endpoint      
+      // func to get data; calls REST service to pull widgets
+      // and returns them to GQL endpoint
       resolve: (_, args, { baseUrl }) => {
         const carData = new CarData(baseUrl);
         return carData.all().then(cars => {
