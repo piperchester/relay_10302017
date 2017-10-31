@@ -1,4 +1,5 @@
 import { GraphQLObjectType } from 'graphql';
+// This is the unique Relay ID, or the index, that each node must have
 import { globalIdField, connectionArgs, connectionFromArray } from 'graphql-relay';
 
 import { widgetConnectionType } from '../connections/widgets';
@@ -9,17 +10,27 @@ import { Widget, Viewer, Car } from '../models/graphql-models';
 import { nodeInterface } from '../utils/node-definitions';
 import { registerType } from '../utils/resolve-type';
 
+// creating the endpoint
 export const viewerType = new GraphQLObjectType({
 
   name: 'Viewer',
   description: 'User of the application',
+
+  // data fields that the Viewer returns		
+ -  // globalIdField will set a Base 64 encoded index
   fields: () => ({
     id: globalIdField('Viewer'),
     widgets: {
       type: widgetConnectionType,
       description: 'get all of the widgets',
+
+      // needed for pagination
       args: connectionArgs,
+
+      // returns them to GQL endpoint
       resolve: (_, args, { baseUrl }) => {
+
+        // create the new endpoint
         const widgetData = new WidgetData(baseUrl);
         return widgetData.all().then(widgets => {
           const widgetModels = widgets.map(w => Object.assign(new Widget(), w));
@@ -33,10 +44,14 @@ export const viewerType = new GraphQLObjectType({
       type: carConnectionType,
       description: 'get all of the cars',
       args: connectionArgs,
+// func to get the data; calls REST service to pull widgets		
+-      // and returns them to GQL endpoint      
       resolve: (_, args, { baseUrl }) => {
         const carData = new CarData(baseUrl);
         return carData.all().then(cars => {
           const carModels = cars.map(c => Object.assign(new Car(), c));
+
+          // create a new connection object (TODO: edge?)
           return connectionFromArray(carModels, args);
         });
       },
