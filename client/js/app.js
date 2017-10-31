@@ -9,7 +9,7 @@ import {
 } from 'found';
 
 import { Home } from './components/home';
-// import { CarHome } from './components/CarHome';
+import { CarHome } from './components/CarHome';
 class AppPage extends React.Component {
 
   static propTypes = {
@@ -32,7 +32,7 @@ class AppPage extends React.Component {
 const BrowserRouter = createBrowserRouter({
   routeConfig: makeRouteConfig(
     <Route path="/" Component={AppPage}>
-      <Route Component={Home} />
+      <Route Component={CarHome} />
     </Route>
   ),
 });

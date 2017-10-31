@@ -2,8 +2,10 @@ import '../../scss/styles.scss';
 
 import * as React from 'react';
 
-// needed to reunder the GQL query
+// needed to render the GQL query
 import { QueryRenderer, graphql } from 'react-relay';
+
+import { CarTableContainer } from './car-table';
 
 import { environment } from '../environment';
 
@@ -16,50 +18,17 @@ export class CarHome extends React.Component {
         <QueryRenderer
           environment={environment}
           query={graphql`
-        query CarHomeQuery {
-          viewer {
-            cars {
-              edges {
-                node {
-                  id
-                  make
-                  model
-                  year
-                  color
-                  price
-                }
+            query CarHomeQuery {
+              viewer {
+                id
+                ...carTable_viewer
               }
             }
-          }
-        }
       `}
           render={ ({ error, props, retry }) => {
             if (props) {
               return (
-                <table className="flex-container-child">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Description</th>
-                      <th>Size</th>
-                      <th>Color</th>
-                      <th>Quantity</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {props.viewer.cars.edges.map(
-                      ({ node: car }) => (
-                        <tr key={car.id}>
-                          <th>{car.make}</th>
-                          <th>{car.model}</th>
-                          <th>{car.year}</th>
-                          <th>{car.color}</th>
-                          <th>{car.price}</th>
-                        </tr>
-                      )
-                    )}
-                  </tbody>
-                </table>
+                <CarTableContainer viewer={props.viewer} />
               );
             } else {
               return (
