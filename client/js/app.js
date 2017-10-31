@@ -9,7 +9,9 @@ import {
 } from 'found';
 
 import { Home } from './components/home';
-import { CarHome } from './components/CarHome';
+import { WidgetHome } from './components/widget-home';
+import { CarHome } from './components/car-home';
+
 class AppPage extends React.Component {
 
   static propTypes = {
@@ -19,12 +21,19 @@ class AppPage extends React.Component {
   render() {
     return <div>
       <header>
-        <h1>GraphQL + Relay ⚛️</h1>
+        <h1>Welcome to Modern Relay!</h1>
       </header>
+      <nav>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/widgets">Widgets</Link></li>
+          <li><Link to="/cars">Cars</Link></li>
+        </ul>
+      </nav>
       {this.props.children}
-      {/* <footer>
-        <small>&copy; 2017, Piper</small>
-      </footer> */}
+      <footer>
+        <small>&copy; 2017, A Cool Company, Inc.</small>
+      </footer>
     </div>;
   }
 }
@@ -32,7 +41,9 @@ class AppPage extends React.Component {
 const BrowserRouter = createBrowserRouter({
   routeConfig: makeRouteConfig(
     <Route path="/" Component={AppPage}>
-      <Route Component={CarHome} />
+      <Route path="/widgets" Component={WidgetHome} />
+      <Route path="/cars" Component={CarHome} />
+      <Route path="/" Component={Home} exact />
     </Route>
   ),
 });

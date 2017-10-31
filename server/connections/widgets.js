@@ -1,3 +1,5 @@
+import { GraphQLInt } from 'graphql';
+
 // Creates a connection type, and an edge type
 import { connectionDefinitions } from 'graphql-relay';
 
@@ -9,4 +11,6 @@ export const {
 } = connectionDefinitions({
   name: 'Widgets',
   nodeType: widgetType,
+
+  connectionFields: () => {}
 });

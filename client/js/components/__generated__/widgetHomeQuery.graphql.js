@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash da3913f28f73db9d5e3790d09ee9bc8e
+ * @relayHash 3629e54ece5fa6bb6ff32ff13cdd0ac5
  */
 
 /* eslint-disable */
@@ -9,7 +9,7 @@
 
 /*::
 import type {ConcreteBatch} from 'relay-runtime';
-export type carHomeQueryResponse = {|
+export type widgetHomeQueryResponse = {|
   +viewer: ?{|
     +id: string;
   |};
@@ -18,23 +18,23 @@ export type carHomeQueryResponse = {|
 
 
 /*
-query carHomeQuery {
+query widgetHomeQuery {
   viewer {
     id
-    ...carTable_viewer
+    ...widgetTable_viewer
   }
 }
 
-fragment carTable_viewer on Viewer {
-  cars {
+fragment widgetTable_viewer on Viewer {
+  widgets {
     edges {
       node {
         id
-        make
-        model
-        year
+        name
+        description
         color
-        price
+        size
+        quantity
       }
     }
   }
@@ -46,7 +46,7 @@ const batch /*: ConcreteBatch*/ = {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "carHomeQuery",
+    "name": "widgetHomeQuery",
     "selections": [
       {
         "kind": "LinkedField",
@@ -65,7 +65,7 @@ const batch /*: ConcreteBatch*/ = {
           },
           {
             "kind": "FragmentSpread",
-            "name": "carTable_viewer",
+            "name": "widgetTable_viewer",
             "args": null
           }
         ],
@@ -77,11 +77,11 @@ const batch /*: ConcreteBatch*/ = {
   "id": null,
   "kind": "Batch",
   "metadata": {},
-  "name": "carHomeQuery",
+  "name": "widgetHomeQuery",
   "query": {
     "argumentDefinitions": [],
     "kind": "Root",
-    "name": "carHomeQuery",
+    "name": "widgetHomeQuery",
     "operation": "query",
     "selections": [
       {
@@ -103,15 +103,15 @@ const batch /*: ConcreteBatch*/ = {
             "kind": "LinkedField",
             "alias": null,
             "args": null,
-            "concreteType": "CarsConnection",
-            "name": "cars",
+            "concreteType": "WidgetsConnection",
+            "name": "widgets",
             "plural": false,
             "selections": [
               {
                 "kind": "LinkedField",
                 "alias": null,
                 "args": null,
-                "concreteType": "CarsEdge",
+                "concreteType": "WidgetsEdge",
                 "name": "edges",
                 "plural": true,
                 "selections": [
@@ -119,7 +119,7 @@ const batch /*: ConcreteBatch*/ = {
                     "kind": "LinkedField",
                     "alias": null,
                     "args": null,
-                    "concreteType": "Car",
+                    "concreteType": "Widget",
                     "name": "node",
                     "plural": false,
                     "selections": [
@@ -134,21 +134,14 @@ const batch /*: ConcreteBatch*/ = {
                         "kind": "ScalarField",
                         "alias": null,
                         "args": null,
-                        "name": "make",
+                        "name": "name",
                         "storageKey": null
                       },
                       {
                         "kind": "ScalarField",
                         "alias": null,
                         "args": null,
-                        "name": "model",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "year",
+                        "name": "description",
                         "storageKey": null
                       },
                       {
@@ -162,7 +155,14 @@ const batch /*: ConcreteBatch*/ = {
                         "kind": "ScalarField",
                         "alias": null,
                         "args": null,
-                        "name": "price",
+                        "name": "size",
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "quantity",
                         "storageKey": null
                       }
                     ],
@@ -179,7 +179,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query carHomeQuery {\n  viewer {\n    id\n    ...carTable_viewer\n  }\n}\n\nfragment carTable_viewer on Viewer {\n  cars {\n    edges {\n      node {\n        id\n        make\n        model\n        year\n        color\n        price\n      }\n    }\n  }\n}\n"
+  "text": "query widgetHomeQuery {\n  viewer {\n    id\n    ...widgetTable_viewer\n  }\n}\n\nfragment widgetTable_viewer on Viewer {\n  widgets {\n    edges {\n      node {\n        id\n        name\n        description\n        color\n        size\n        quantity\n      }\n    }\n  }\n}\n"
 };
 
 module.exports = batch;
